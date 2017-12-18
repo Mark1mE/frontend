@@ -1,0 +1,16 @@
+<div class="loginpage">
+    <div class="container">
+        <form class="form-signin" [formGroup]="validateForm" (submit)="onsubmit()">
+            <h2 class="form-signin-heading">Borroom系统登录</h2>
+            <input type="text" formControlName="userid" class="form-control" placeholder="工号/学号" required autofocus>
+            <input type="password" formControlName="password" class="form-control" placeholder="密码">
+            <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> 记住我
+            </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">立即登录</button>
+            <a routerLink="/registry">没有帐号?马上注册!</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+.date-y, .date-d, .date-m, .time-h, .time-m {
+  width:50px;
+}
+.form-control {
+  width: 500px;
+  height: 110px;
+}

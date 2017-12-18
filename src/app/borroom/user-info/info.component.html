@@ -1,0 +1,26 @@
+<h1>欢迎使用Borroom会议室预定系统!</h1>
+<div class="container">
+  <div class="col-xs-6 col-sm-3 placeholder" >
+    <img src="assets/img.jpg" width="200" height="200" class="img-responsive" alt="默认头像未成功加载~">
+    <h2>个人信息</h2><hr/>
+    <form (submit)="onsubmit()">
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon">用户ID</span>
+        <input type="text" class="form-control" id="userid" aria-describedby="sizing-addon1" disabled value="{{userid}}">
+      </div>
+      <div class="input-group input-group-lg">
+        <input type="text" class="form-control" id="password" aria-describedby="basic-addon2" value="{{password}}">
+        <span class="input-group-addon">密码</span>
+      </div>
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon">联系电话</span>
+        <input type="text" class="form-control" id="phone" aria-describedby="sizing-addon1" value="{{phone}}">
+      </div>
+      <div class="input-group input-group-lg">
+        <input type="text" class="form-control" id="teacher" aria-describedby="basic-addon2" value="{{teacher}}">
+        <span class="input-group-addon">导师</span>
+      </div>
+      <button type="submit" class="btn btn-lg saveButton" (click)="onsubmit()">保存修改</button>
+    </form>
+  </div>
+</div>

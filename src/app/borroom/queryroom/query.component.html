@@ -1,0 +1,40 @@
+<form  [formGroup]="queryForm" (submit)="onsubmit()">
+  <ul class="nav nav-pills">
+    <li role="presentation" class="disabled"><a>选择会议室</a></li>
+    <li role="presentation" class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1" role="button" (click)="chooseroom()">
+        选择会议室 <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li *ngFor="let boardroom of room">
+          <a (click)="roomclick(boardroom['roomnum'])">{{boardroom['roomnum']}}</a>
+        </li>
+      </ul>
+    </li>
+    <li role="presentation" class="disabled"><a>开始日期</a></li>
+    <li role="presentation"><input type="date"  class="starttime" formControlName="starttime"></li>
+    <li role="presentation"><button type="submit" class="btn btn-primary query">查询</button></li>
+  </ul>
+</form>
+<div class="alert alert-success" *ngIf="roomdetail">所选会议室详细信息：{{roomdetail}}</div>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>编号</th>
+      <th>已借用使用时间</th>
+      <th>当前状态</th>
+    </tr>
+    </thead>
+    <tbody *ngIf="record">
+    <tr *ngFor="let recordItem of record; let i = index">
+      <th>{{i + 1}}</th>
+      <th>{{recordItem['starttime'] | date:'yyyy-MM-dd HH:mm:ss'}}-{{recordItem['endtime'] | date:'yyyy-MM-dd HH:mm:ss'}}</th>
+      <th>{{recordItem['status'] | infoPipe}}</th>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
