@@ -49,6 +49,9 @@ export class UserService {
         return this.http.post('http://127.0.0.1:8080/login', userinfo);
     }
 
+    /*isadmin(userid: string): Observable<any> {
+      return this.http.get<User>('http://127.0.0.1:8080/users/isadmin/' + userid);
+    }*/
     /*
     isLogin(): Observable<any> {
       return this.http.get<any>('http://127.0.0.1:8080/isLogin');

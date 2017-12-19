@@ -31,8 +31,13 @@ export class LoginComponent {
       this.userservice.validateLogin(this.validateForm.controls['userid'].value,
                                       this.validateForm.controls['password'].value).subscribe(data => {
         if (data['code'] === 0) {
-          localStorage.setItem('user', this.validateForm.controls['userid'].value);
-          this.router.navigate(['/index']);
+          if (data['data'] === 'user') {
+            localStorage.setItem('user', this.validateForm.controls['userid'].value);
+            this.router.navigate(['/index']);
+          } else if (data['data'] === 'admin') {
+            localStorage.setItem('user', this.validateForm.controls['userid'].value);
+            this.router.navigate(['/admin']);
+          }
         } else if (data['code'] === 1) {
           alert('用户不存在');
           this.resetForm();

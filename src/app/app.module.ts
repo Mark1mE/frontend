@@ -22,6 +22,10 @@ import {ModifyComponent} from './borroom/order/modify.component';
 import {FilterPipe} from './util/FilterPipe.pipe';
 import {DateFormatService} from './Service/dateFormat.service';
 import {AboutusComponent} from './borroom/about-us/aboutus.component';
+import {AdminIndexComponent} from './admin/admin-index.component';
+import {RecordManageComponent} from './admin/record-manage/record-manage.component';
+import {RoomManageComponent} from './admin/room-manage/room-manage.component';
+import {UserManageComponent} from './admin/user-manage/user-manage.component';
 
 
 @NgModule({
@@ -37,7 +41,11 @@ import {AboutusComponent} from './borroom/about-us/aboutus.component';
     InfoPipePipe,
     ModifyComponent,
     FilterPipe,
-    AboutusComponent
+    AboutusComponent,
+    AdminIndexComponent,
+    RecordManageComponent,
+    RoomManageComponent,
+    UserManageComponent
   ],
   imports: [
     BrowserModule,

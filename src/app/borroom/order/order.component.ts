@@ -55,6 +55,7 @@ export class OrderComponent {
   }
   deleteorder(id: number) {
     this.recordService.deleteRecord(id).subscribe(records => {
+      console.log(records['code']);
       if (records['code'] === 0) {
         alert('删除成功');
         window.location.reload();

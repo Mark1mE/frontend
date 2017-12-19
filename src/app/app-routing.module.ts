@@ -13,6 +13,10 @@ import {SignoutGuard} from './Auth/guard/signout.guard';
 import {CommonModule} from '@angular/common';
 import {ModifyComponent} from './borroom/order/modify.component';
 import {AboutusComponent} from './borroom/about-us/aboutus.component';
+import {AdminIndexComponent} from './admin/admin-index.component';
+import {UserManageComponent} from './admin/user-manage/user-manage.component';
+import {RoomManageComponent} from './admin/room-manage/room-manage.component';
+import {RecordManageComponent} from './admin/record-manage/record-manage.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -30,6 +34,16 @@ const routes: Routes = [
         ]},
       { path: 'about-us', component: AboutusComponent }
     ], canActivate: [LoginGuard]/*, canDeactivate: [SignoutGuard]*/
+  },
+  {
+    path: 'admin',
+    component: AdminIndexComponent,
+    children: [
+      { path: '', redirectTo: 'info', pathMatch: 'full' },
+      { path: 'user-manage', component: UserManageComponent },
+      { path: 'room-manage', component: RoomManageComponent },
+      { path: 'record-manage', component: RecordManageComponent }
+    ]
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
