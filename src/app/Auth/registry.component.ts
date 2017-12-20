@@ -36,9 +36,15 @@ export class RegistryComponent {
                                   this.registryForm.controls['idnum'].value,
                                   this.registryForm.controls['phone'].value,
                                   this.registryForm.controls['teacher'].value).subscribe(user => {
-                                    alert(user['code']);
         if (user['code'] === 0) {
+          alert('注册成功');
           this.router.navigate(['/login']);
+        } else if (user['code'] === 4) {
+          alert('用户ID重复');
+        } else if (user['code'] === 9) {
+          alert('用户ID不合法');
+        } else if (user['code'] === 10) {
+          alert('身份证号输入错误');
         }
       });
     }
