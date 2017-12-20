@@ -21,6 +21,10 @@ export class UserService {
         return this.http.get<User[]>('http://127.0.0.1:8080/users');
     }
 
+    getUsersExceptAdmin(userid: string): Observable<User[]> {
+      return this.http.get<User[]>('http://127.0.0.1:8080/admin/users/' + userid);
+    }
+
     addUser(userid: string, password: string, phone: string, teacher: string, isadmin: boolean): Observable<any> {
       const userinfo = new HttpParams().set('userid', userid)
         .set('password', password)

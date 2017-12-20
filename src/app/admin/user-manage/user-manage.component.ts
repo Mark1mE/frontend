@@ -21,7 +21,7 @@ export class UserManageComponent {
               private userService: UserService) {
     if (localStorage.getItem('user')) {
       this.userid = localStorage.getItem('user');
-      userService.getUsers().subscribe(users => {
+      userService.getUsersExceptAdmin(this.userid).subscribe(users => {
         this.record = users['data'];
       });
     } else {
