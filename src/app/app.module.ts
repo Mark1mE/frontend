@@ -26,6 +26,11 @@ import {AdminIndexComponent} from './admin/admin-index.component';
 import {RecordManageComponent} from './admin/record-manage/record-manage.component';
 import {RoomManageComponent} from './admin/room-manage/room-manage.component';
 import {UserManageComponent} from './admin/user-manage/user-manage.component';
+import {ModifyUserRecordComponent} from './admin/record-manage/modify-user-record.component';
+import {ModifyRoomComponent} from './admin/room-manage/modify-room.component';
+import {AddRoomComponent} from './admin/room-manage/add-room.component';
+import {ModifyUserComponent} from './admin/user-manage/modify-user.component';
+import {AddUserComponent} from './admin/user-manage/add-user.component';
 
 
 @NgModule({
@@ -45,7 +50,12 @@ import {UserManageComponent} from './admin/user-manage/user-manage.component';
     AdminIndexComponent,
     RecordManageComponent,
     RoomManageComponent,
-    UserManageComponent
+    UserManageComponent,
+    ModifyUserRecordComponent,
+    ModifyRoomComponent,
+    AddRoomComponent,
+    ModifyUserComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,

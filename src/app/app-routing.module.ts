@@ -40,6 +40,7 @@ const routes: Routes = [
     component: AdminIndexComponent,
     children: [
       { path: '', redirectTo: 'info', pathMatch: 'full' },
+      { path: 'info', component: UserInfoComponent },
       { path: 'user-manage', component: UserManageComponent },
       { path: 'room-manage', component: RoomManageComponent },
       { path: 'record-manage', component: RecordManageComponent }

@@ -1,0 +1,42 @@
+<!--<div>
+  <form class="navbar-form navbar-left">
+    <input type="text" class="form-control" placeholder="搜索会议室..." [formControl]="keywordFilter">
+  </form>
+</div>-->
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#addroom"><span class="glyphicon glyphicon-plus"></span>添加会议室</button>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr style="height: 50px">
+      <th>编号</th>
+      <th>会议室</th>
+      <th>最大容纳人数</th>
+      <th>是否有投影仪</th>
+      <th>是否允许用户预约</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody *ngIf="record" style="line-height: 50px;">
+    <tr *ngFor="let recordItem of record; let i = index" style="height: 50px" id="record">
+      <!--<th>{{recordItem['id']}}</th>-->
+      <th>{{i + 1}}</th>
+      <th>{{recordItem['roomnum']}}</th>
+      <th>{{recordItem['maxcap']}}</th>
+      <th>{{recordItem['projector']}}</th>
+      <th>{{recordItem['available']}}</th>
+      <label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <button type="button" class="btn btn-primary btn-sm modify" data-toggle="modal" data-target="#myModal" (click)="editInfo(recordItem)">
+        修改
+      </button>
+      <label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <button type="button" class="btn btn-primary btn-sm delete" (click)="deleteroom(recordItem['roomnum'])">
+        删除
+      </button>
+    </tr>
+    <app-modify-room></app-modify-room>
+    <app-add-room></app-add-room>
+    </tbody>
+  </table>
+</div>
+
+

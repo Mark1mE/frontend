@@ -1,0 +1,53 @@
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active" (click)="allorder()"><a role="tab" data-toggle="tab">所有预约</a></li>
+  <li role="presentation" (click)="pass()"><a role="tab" data-toggle="tab">已通过</a ></li>
+  <li role="presentation" (click)="review()"><a role="tab" data-toggle="tab">审核中</a></li>
+  <li role="presentation" (click)="reject()"><a role="tab" data-toggle="tab">驳回</a></li>
+  <!--<form class="navbar-form navbar-right">
+    <input type="text" class="form-control" placeholder="搜索您的预约历史..." [formControl]="keywordFilter">
+  </form>-->
+</ul>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr style="height: 50px">
+      <th>编号</th>
+      <th>用户</th>
+      <th>借用会议室</th>
+      <th>申请使用时间</th>
+      <th>申请理由</th>
+      <th>当前状态</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody *ngIf="record" style="line-height: 50px;">
+    <tr *ngFor="let recordItem of record  | filter:'roomnum':keywords;let i = index" style="height: 50px" id="record">
+      <!--<th>{{recordItem['id']}}</th>-->
+      <th>{{i + 1}}</th>
+      <th>{{recordItem['userid']}}</th>
+      <th>{{recordItem['roomnum']}}</th>
+      <th>{{recordItem['starttime'] | date:'yyyy-MM-dd HH:mm:ss'}}-{{recordItem['endtime'] | date:'yyyy-MM-dd HH:mm:ss'}}</th>
+      <th>{{recordItem['usereason']}}</th>
+      <th>{{recordItem['status'] | infoPipe}}</th>
+      <!--<th *ngIf="recordItem['status'] === 2 || recordItem['status'] === 3">-->
+      <button type="button" class="btn btn-primary btn-sm pass" (click)="passorder(recordItem['id'])">
+        通过
+      </button>
+      <label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <button type="button" class="btn btn-primary btn-sm modify" data-toggle="modal" data-target="#myModal" (click)="editInfo(recordItem)">
+        修改
+      </button>
+      <label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <button type="button" class="btn btn-primary btn-sm reject" (click)="rejectorder(recordItem['id'])">
+        驳回
+      </button>
+      <!--</th>
+      <th *ngIf="recordItem['status'] === 1">
+      </th>-->
+    </tr>
+    <app-modify-user-record></app-modify-user-record>
+    </tbody>
+  </table>
+</div>
+
+

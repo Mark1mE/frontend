@@ -20,6 +20,10 @@ export class RecordService {
     return this.http.get<any>('http://127.0.0.1:8080/records/userid/' + userid);
   }
 
+  getAllRecords(): Observable<any> {
+    return this.http.get<any>('http://127.0.0.1:8080/records');
+  }
+
   addRecords(userid: string, roomnum: string, starttime: string, endtime: string, usereason: string) {
     const params = new HttpParams().set('userid', userid).set('roomnum', roomnum)
       .set('starttime', starttime.replace('T',' '))
@@ -66,5 +70,38 @@ export class RecordService {
 
   deleteRecord(id: number): Observable<any> {
     return this.http.delete<any>('http://127.0.0.1:8080/records/' + id);
+  }
+
+  allRecordsPass(): Observable<any> {
+    return this.http.get<any>('http://127.0.0.1:8080/records/status/' + '1');
+  }
+
+  allRecordsReview(): Observable<any> {
+    return this.http.get<any>('http://127.0.0.1:8080/records/status/' + '2');
+  }
+
+  allRecordsReject(): Observable<any> {
+    return this.http.get<any>('http://127.0.0.1:8080/records/status/' + '3');
+  }
+
+  makeRecordPass(id: number): Observable<any> {
+    const params = new HttpParams().set('id', id + '');
+    return this.http.put<any>('http://127.0.0.1:8080/records/pass', params);
+  }
+
+  makeRecordReject(id: number): Observable<any> {
+    const params = new HttpParams().set('id', id + '');
+    return this.http.put<any>('http://127.0.0.1:8080/records/reject', params);
+  }
+
+  modifyUserRecord(id: string, userid: string, roomnum: string, starttime: string, endtime: string, usereason: string) {
+    const params = new HttpParams().set('id', id).set('userid', userid).set('roomnum', roomnum)
+      .set('starttime', starttime)
+      .set('endtime', endtime)
+      .set('usereason', usereason)
+      .set('createtime', new Date().toLocaleDateString().replace('/', '-').replace('/', '-')
+        + ' ' + new Date().toTimeString().split(' ')[0])
+      .set('status', '1');
+    return this.http.put<any>('http://127.0.0.1:8080/records', params);
   }
 }

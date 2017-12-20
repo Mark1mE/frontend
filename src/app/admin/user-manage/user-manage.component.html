@@ -1,0 +1,44 @@
+<!--<div>
+  <form class="navbar-form navbar-left">
+    <input type="text" class="form-control" placeholder="搜索会议室..." [formControl]="keywordFilter">
+  </form>
+</div>-->
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#adduser"><span class="glyphicon glyphicon-plus"></span>添加新用户</button>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr style="height: 50px">
+      <th>编号</th>
+      <th>用户ID</th>
+      <th>密码</th>
+      <th>联系电话</th>
+      <th>导师</th>
+      <th>是否是管理员</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody *ngIf="record" style="line-height: 50px;">
+    <tr *ngFor="let recordItem of record; let i = index" style="height: 50px" id="record">
+      <!--<th>{{recordItem['id']}}</th>-->
+      <th>{{i + 1}}</th>
+      <th>{{recordItem['userid']}}</th>
+      <th>{{recordItem['password']}}</th>
+      <th>{{recordItem['phone']}}</th>
+      <th>{{recordItem['teacher']}}</th>
+      <th>{{recordItem['isadmin']}}</th>
+      <label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <button type="button" class="btn btn-primary btn-sm modify" data-toggle="modal" data-target="#myModal" (click)="editInfo(recordItem)">
+        修改
+      </button>
+      <label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <button type="button" class="btn btn-primary btn-sm delete" (click)="deleteuser(recordItem['userid'])">
+        删除
+      </button>
+    </tr>
+    <app-modify-user></app-modify-user>
+    <app-add-user></app-add-user>
+    </tbody>
+  </table>
+</div>
+
+

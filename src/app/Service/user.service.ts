@@ -21,6 +21,19 @@ export class UserService {
         return this.http.get<User[]>('http://127.0.0.1:8080/users');
     }
 
+    addUser(userid: string, password: string, phone: string, teacher: string, isadmin: boolean): Observable<any> {
+      const userinfo = new HttpParams().set('userid', userid)
+        .set('password', password)
+        .set('phone', phone)
+        .set('teacher', teacher)
+        .set('isadmin', isadmin + '');
+      return this.http.post('http://127.0.0.1:8080/users', userinfo);
+    }
+
+    deleteUser(userid: string): Observable<any> {
+      return this.http.delete<User>('http://127.0.0.1:8080/users/' + userid);
+    }
+
     getUser(userid: string): Observable<any> {
         return this.http.get<User>('http://127.0.0.1:8080/users/' + userid);
     }
@@ -29,8 +42,7 @@ export class UserService {
       const userinfo = new HttpParams().set('userid', userid)
         .set('password', password)
         .set('phone', phone)
-        .set('teacher', teacher)
-        .set('isadmin', '0');
+        .set('teacher', teacher);
         return this.http.put('http://127.0.0.1:8080/users', userinfo);
     }
 
@@ -49,9 +61,15 @@ export class UserService {
         return this.http.post('http://127.0.0.1:8080/login', userinfo);
     }
 
-    /*isadmin(userid: string): Observable<any> {
-      return this.http.get<User>('http://127.0.0.1:8080/users/isadmin/' + userid);
-    }*/
+    adminUpdateUser(userid: string, password: string, phone: string, teacher: string, isadmin: boolean): Observable<any> {
+      const userinfo = new HttpParams().set('userid', userid)
+        .set('password', password)
+        .set('phone', phone)
+        .set('teacher', teacher)
+        .set('isadmin', isadmin + '');
+      return this.http.put('http://127.0.0.1:8080/admin/users', userinfo);
+    }
+
     /*
     isLogin(): Observable<any> {
       return this.http.get<any>('http://127.0.0.1:8080/isLogin');
