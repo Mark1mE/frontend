@@ -20,9 +20,9 @@ export class RegistryComponent {
     this.registryForm = fb.group({
       userid: ['', Validators.required],
       confirmPassword: fb.group({
-        password: ['', [Validators.required]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
         reInputPassword: ['']
-      }),
+      }, {validator: equalValidator}),
       idnum: ['', [Validators.required, Validators.minLength(18), Validators.maxLength(18)]],
       phone: ['', [Validators.minLength(11), Validators.maxLength(11)]],
       teacher: ['']
